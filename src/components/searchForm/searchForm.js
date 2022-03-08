@@ -18,6 +18,7 @@ function Searchbar({ onSubmit }) {
       return;
     }
     onSubmit(searchQuery);
+    setSearchQuery("");
   };
 
   return (

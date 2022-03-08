@@ -16,7 +16,9 @@ const Image = styled.img`
   width: 400px;
 `;
 const Button = styled.button`
+  display: block;
   border: none;
+  cursor: pointer;
   padding: 5px;
   font-size: 20px;
 `;

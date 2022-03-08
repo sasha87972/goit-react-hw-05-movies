@@ -1,4 +1,5 @@
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate, useLocation } from "react-router-dom";
+import { useState } from "react";
 import PropTypes from "prop-types";
 import {
   Wrapper,
@@ -10,8 +11,17 @@ import {
 } from "./movieCard.styled";
 export default function MovieCard({ item }) {
   const navigate = useNavigate();
+  const location = useLocation();
+  const [getPrevUrl] = useState(() => {
+    return location;
+  });
+  const { pathname, search } = getPrevUrl.state.prevUrl;
   const prevPage = () => {
-    navigate(-1);
+    if (getPrevUrl.state === null) {
+      navigate("/");
+    } else {
+      navigate(pathname + search ?? "/");
+    }
   };
   return (
     <>
